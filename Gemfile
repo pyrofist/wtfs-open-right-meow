@@ -41,7 +41,7 @@ group :test do
   gem 'rails-controller-testing'
   gem 'factory_girl_rails'
   gem 'simplecov', require: false
-  gem 'shoulda-matchers', git: 'htps://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
 end
 
 group :development do
