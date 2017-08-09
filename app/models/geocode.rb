@@ -6,7 +6,7 @@ class Geocode
 
   def coordinate_lookup
     unless @response_hash
-      @response_hash = APIHelper.get_response_as_hash(@url_string)
+      @response_hash = ApiHelper.get_response_as_hash(@url_string)
     end
     if @response_hash["status"] == "OK"
       @response_hash["results"].first["geometry"]["location"]
@@ -17,7 +17,7 @@ class Geocode
 
   def formatted_address
     unless @response_hash
-      @response_hash = APIHelper.get_response_as_hash(@url_string)
+      @response_hash = ApiHelper.get_response_as_hash(@url_string)
     end
     if @response_hash["status"] == "OK"
       @response_hash["results"].first["formatted_address"]

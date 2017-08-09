@@ -2,7 +2,7 @@ require 'net/http'
 require 'json'
 require 'active_support'
 
-module APIHelper
+module ApiHelper
   def self.get_response_as_hash(url, format = "JSON")
     response = get_response(url)
     if format == "JSON"

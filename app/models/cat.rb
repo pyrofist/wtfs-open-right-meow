@@ -31,6 +31,6 @@ private
     if category
       url_string << "&category=#{category}"
     end
-    APIHelper.get_response_as_hash(url_string, "XML")
+    ApiHelper.get_response_as_hash(url_string, "XML")
   end
 end

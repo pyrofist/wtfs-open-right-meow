@@ -6,7 +6,7 @@ class Place
   end
 
   def results_lookup
-    @response_hash = APIHelper.get_response_as_hash(@url_string)
+    @response_hash = ApiHelper.get_response_as_hash(@url_string)
 
     if @response_hash["status"] == "OK"
       results = @response_hash["results"].map do |result|
