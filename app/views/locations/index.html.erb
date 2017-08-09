@@ -1,0 +1,28 @@
+<div class="new-location-container">
+  <div class="new-location-errors">
+    <% if defined? errors %>
+      <%= render partial: "errors", locals: { errors: errors } %>
+    <% end %>
+  </div>
+  <%= erb :"/locations/_form" %>
+</div>
+
+<div class="location-container">
+  <% if session[:user_id] %>
+    <h2>My Favorites</h2>
+    <% @user_locations.each do |location| %>
+      <div>
+        <a href="/locations/<%= location.id %>"><%= location.formatted_address %></a>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="location-container">
+  <h2>Recent Searches</h2>
+  <% @locations.each do |location| %>
+    <div>
+      <a href="/locations/<%= location.id %>"><%= location.formatted_address %></a>
+    </div>
+  <% end %>
+</div>

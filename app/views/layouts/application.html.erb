@@ -9,6 +9,28 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="header">
+      <div class="left small-cap main box">
+        <%= Cat.get_and_display({category: "caturday", size: "small", css_class: "short"}) %>
+        <h1 class="inline">Wtf's Open Right Meow?</h1>
+      </div>
+      <div class="right side box">
+        <% if session[:user_id] %>
+          <form action="/sessions/1" method="POST">
+            <input type="hidden" name="_method" value="DELETE"  />
+            <input type="submit" value="Logout" class="button-as-link"/>
+          </form>
+        <% else %>
+          <% if !defined? login %>
+            <%= erb :"/sessions/_new" %>
+          <% end %>
+          <a href="/users/new">Register</a>
+        <% end %>
+        <a href="/">Home</a>
+      </div>
+    </div>
+    <div class="body">
+      <%= yield %>
+    </div>
   </body>
 </html>
