@@ -1,7 +1,21 @@
 <%= form_for @user do |f| %>
-  <%= f.text_field :email, placeholder: "Email" %>
-  <%= f.text_field :username, placeholder: "Username" %>
-  <%= f.password_field :password, placeholder: "Password" %>
-  <%= f.password_field :password_confirmation: "Password Confirmation" %>
-  <%= f.submit "Sign Up" %>
+  <div>
+    <%= f.text_field :email,
+        placeholder: "Email" %>
+  </div>
+  <div>
+    <%= f.text_field :username,
+        placeholder: "Username" %>
+  </div>
+  <div>
+    <%= f.password_field :password,
+        placeholder: "Password" %>
+  </div>
+  <div>
+    <%= f.password_field :password_confirmation,
+        placeholder: "Password Confirmation" %>
+  </div>
+  <div>
+    <%= f.submit "Sign Up" %>
+  </div>
 <% end %>
