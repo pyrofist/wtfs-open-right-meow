@@ -1,5 +1,5 @@
 <h1><%= @location.formatted_address %></h1>
-<%= Cat.get_and_display({gif: false, size: "small"}) %>
+<%= Cat.get_and_display({gif: false, size: "small"}).html_safe %>
 <% @location.nearby_restaurants.each do |restaurant| %>
   <p>
     <div>

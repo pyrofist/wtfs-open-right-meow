@@ -18,7 +18,7 @@ class LocationsController < ApplicationController
     location = Location.new(address: params[:address])
     if location.valid?
       location.save
-      redirect "/locations/#{location.id}"
+      redirect_to location
     else
       render :new, locals: {errors: location.errors.full_messages}
     end

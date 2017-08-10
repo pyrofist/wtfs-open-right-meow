@@ -3,13 +3,13 @@ class FavoritesController < ApplicationController
     user = User.find(params[:user_id])
     location = Location.find(params[:location_id])
     user.locations << location
-    redirect "/locations/#{location.id}"
+    redirect_to location
   end
 
   def destroy
     user = User.find(params[:user_id])
     location = Location.find(params[:location_id])
     user.locations.delete(location)
-    redirect "/locations/#{location.id}"
+    redirect_to location
   end
 end
