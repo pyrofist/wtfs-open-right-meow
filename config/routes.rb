@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :locations, except: [:edit, :update, :destroy]
 
+  delete "logout" => "sessions#destroy"
+
   root to: "locations#index"
 end
