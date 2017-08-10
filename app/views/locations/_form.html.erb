@@ -1,4 +1,4 @@
-<form action="/locations" method="POST">
-  <input type="text" name="address" />
-  <input type="submit" value="Feed me!" />
-</form>
+<%= form_tag "/locations" do %>
+  <%= text_field_tag :address, nil, placeholder: "Address" %>
+  <%= submit_tag "Feed me!" %>
+<% end %>

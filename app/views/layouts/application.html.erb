@@ -16,14 +16,8 @@
       </div>
       <div class="right side box">
         <% if logged_in? %>
-          <form action="/sessions/1" method="POST">
-            <input type="hidden" name="_method" value="DELETE"  />
-            <input type="submit" value="Logout" class="button-as-link"/>
-          </form>
+          <%= link_to logout_path, method: :delete %>
         <% else %>
-          <% if !defined? login %>
-            <%= render partial: "/sessions/new" %>
-          <% end %>
           <a href="/users/new">Register</a>
         <% end %>
         <a href="/">Home</a>

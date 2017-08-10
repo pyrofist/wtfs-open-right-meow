@@ -1,18 +1,4 @@
 <h1><%= @location.formatted_address %></h1>
-<% if logged_in %>
-  <% if favorited %>
-    <form action="/users/<%= current_user.id %>/favorites" method="POST">
-      <input type="hidden" name="_method" value="DELETE" />
-      <input type="hidden" name="location_id" value="<%= @location.id %>">
-      <input type="submit" value="Remove from Favorites" />
-    </form>
-  <% else %>
-    <form action="/users/<%= current_user.id %>/favorites" method="POST">
-      <input type="hidden" name="location_id" value="<%= @location.id %>">
-      <input type="submit" value="Add location to Favorites" />
-    </form>
-  <% end %>
-<% end %>
 <%= Cat.get_and_display({gif: false, size: "small"}) %>
 <% @location.nearby_restaurants.each do |restaurant| %>
   <p>

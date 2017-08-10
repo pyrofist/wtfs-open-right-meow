@@ -1,4 +1,6 @@
 class LocationsController < ApplicationController
+  skip_before_action :require_login
+
   def index
     @locations = Location.all.order("created_at desc").limit(5)
     if session[:user_id]
