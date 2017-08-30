@@ -2,6 +2,7 @@ class Location < ActiveRecord::Base
   has_many :favorites
 
   validate :has_findable_address
+  validates_presence_of :latitude, :longitude
   validates_uniqueness_of :latitude, scope: :longitude
 
   def has_findable_address
