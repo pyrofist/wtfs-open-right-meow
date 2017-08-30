@@ -10,7 +10,7 @@ module ApiHelper
     elsif format == "XML"
       Hash.from_xml(response)["response"]
     else
-      {response: response}
+      { response: response }
     end
   end
 
