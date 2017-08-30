@@ -20,6 +20,6 @@ class Location < ActiveRecord::Base
 
   def nearby_restaurants
     @place = Place.new(self.latitude, self.longitude)
-     @place.results_lookup
+    @place.results_lookup
   end
 end
