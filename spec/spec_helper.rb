@@ -1,6 +1,8 @@
 require 'simplecov'
+require 'webmock/rspec'
+WebMock.disable_net_connect!(allow_localhost: true)
 
-SimpleCov.start 'rails' do 
+SimpleCov.start 'rails' do
   add_filter 'app/channels/application_cable'
   add_filter 'app/jobs/application_job.rb'
   add_filter 'app/mailers'
