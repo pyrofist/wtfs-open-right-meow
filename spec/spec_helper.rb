@@ -8,6 +8,21 @@ SimpleCov.start 'rails' do
   add_filter 'app/mailers'
 end
 
+bad_fake_lookup_response = <<-BAD_FAKE_LOOKUP_RESPONSE
+{
+   "results" : [
+      {
+         "address_components" : [],
+         "formatted_address" : "Fake Formatted Address",
+         "geometry" : {
+         },
+         "types" : [ "street_address" ]
+      }
+   ],
+   "status" : "OK"
+}
+BAD_FAKE_LOOKUP_RESPONSE
+
 fake_lookup_response = <<-FAKE_LOOKUP_RESPONSE
 {
    "results" : [
@@ -16,6 +31,8 @@ fake_lookup_response = <<-FAKE_LOOKUP_RESPONSE
          "formatted_address" : "Fake Formatted Address",
          "geometry" : {
             "location" : {
+              "lat": 40.000000,
+              "lng": 80.000000
             }
          },
          "types" : [ "street_address" ]
@@ -80,6 +97,18 @@ RSpec.configure do |config|
 
   config.before(:each) do
     stub_request(:get, "https://maps.googleapis.com/maps/api/geocode/json?address=&key=").
+    with(
+      headers: { 'Accept'=>'*/*',
+        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+        'Host'=>'maps.googleapis.com',
+        'User-Agent'=>'Ruby'
+      }
+    ).to_return(
+      status: 200,
+      body: bad_fake_lookup_response,
+      headers: {}
+    )
+    stub_request(:get, "https://maps.googleapis.com/maps/api/geocode/json?address=test&key=").
     with(
       headers: { 'Accept'=>'*/*',
         'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
