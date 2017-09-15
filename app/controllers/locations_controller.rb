@@ -16,9 +16,13 @@ class LocationsController < ApplicationController
 
   def create
     location = Location.new(address: params[:address])
-    if location.valid?
-      location.save
-      redirect_to location
+    if location.has_findable_address
+      if location.valid?
+        location.save
+        redirect_to location
+      else
+        render :new, locals: {errors: location.errors.full_messages}
+      end
     else
       render :new, locals: {errors: location.errors.full_messages}
     end

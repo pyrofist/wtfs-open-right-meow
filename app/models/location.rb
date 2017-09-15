@@ -1,7 +1,8 @@
 class Location < ActiveRecord::Base
   has_many :favorites
 
-  validate :has_findable_address
+  #validate :has_findable_address
+  validates_presence_of :latitude, :longitude
   validates_uniqueness_of :latitude, scope: :longitude
 
   def has_findable_address
@@ -13,13 +14,15 @@ class Location < ActiveRecord::Base
       self.latitude = coordinate_hash["lat"]
       self.longitude = coordinate_hash["lng"]
       self.formatted_address = @geocode.formatted_address
+      true
     else
       errors.add(:address, "could not be processed")
+      false
     end
   end
 
   def nearby_restaurants
     @place = Place.new(self.latitude, self.longitude)
-     @place.results_lookup
+    @place.results_lookup
   end
 end
